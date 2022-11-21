@@ -6,7 +6,6 @@ const findTuits  = (req, res) => res.json(tuits);
 
 const createTuit = (req, res) => {
     const newTuit = req.body;
-    const id = useId();
     newTuit._id = (new Date()).getTime();
     newTuit.likes = 0;
     newTuit.liked = false;
