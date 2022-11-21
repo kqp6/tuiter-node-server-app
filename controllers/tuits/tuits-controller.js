@@ -11,7 +11,7 @@ const createTuit = (req, res) => {
     newTuit.liked = false;
     newTuit.username = 'me';
     newTuit.handle = '@me';
-    newTuit.replies = 'just now';
+    newTuit.time = 'just now';
     newTuit.image = "space.webp";
     newTuit.title = "New Tuit";
     newTuit.topic = "Space";
