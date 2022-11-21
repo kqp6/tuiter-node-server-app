@@ -1,6 +1,9 @@
 import posts from "./tuits.js";
 let tuits = posts;
 
+const findTuits  = (req, res) => res.json(tuits);
+
+
 const createTuit = (req, res) => {
     const newTuit = req.body;
     newTuit._id = (new Date()).getTime()+'';
@@ -9,24 +12,25 @@ const createTuit = (req, res) => {
     tuits.push(newTuit);
     res.json(newTuit);
 }
-const findTuits  = (req, res) => {
-    res.json(tuits);
-}
+
 
 const updateTuit = (req, res) => {
     const tuitdIdToUpdate = req.params.tid;
     const updates = req.body;
     const tuitIndex = tuits.findIndex(
-      (t) => t._id === tuitdIdToUpdate)
+      (t) => t._id.toString() === tuitdIdToUpdate)
     tuits[tuitIndex] = 
       {...tuits[tuitIndex], ...updates};
     res.sendStatus(200);
 }
+// !!!Careful the id comparison here because
+// the id is a number and the parameter is always a string
+// so either set all id as strings or convert them to string when comparing
 
 const deleteTuit = (req, res) => {
     const tuitdIdToDelete = req.params.tid;
     tuits = tuits.filter((t) =>
-      t._id !== tuitdIdToDelete);
+      t._id.toString() !== tuitdIdToDelete);
     res.sendStatus(200);
 }
 
