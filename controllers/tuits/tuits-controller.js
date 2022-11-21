@@ -1,6 +1,5 @@
 import posts from "./tuits.js";
 let tuits = posts;
-import { useId } from "react";
 
 const findTuits  = (req, res) => res.json(tuits);
 
