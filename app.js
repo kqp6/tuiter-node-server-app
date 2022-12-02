@@ -9,12 +9,12 @@ import TuitsController
 
 import mongoose from "mongoose";
 
+const CONNECTION_STRING = `${process.env.DB_CONNECTION_STRING}/test` 
+mongoose.connect(CONNECTION_STRING);
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-const CONNECTION_STRING = `${process.env.DB_CONNECTION_STRING}/test` || 'mongodb://localhost:27017/tuiter'
-mongoose.connect(CONNECTION_STRING);
 TuitsController(app);
 HelloController(app);
 UserController(app);
